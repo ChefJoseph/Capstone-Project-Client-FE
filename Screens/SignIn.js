@@ -1,51 +1,51 @@
 import React, {useState} from 'react'
-import { StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TextInput, TouchableOpacity, SafeAreaView, StatusBar} from 'react-native';
 import FormError from '../Components/FormError'
 import '../assets/HOMEPAGE.png'
 import Icon from 'react-native-vector-icons/Feather'
 import Auth from '../Components/auth'
 
 
-export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
+
+export default function SignIn({navigation,setIsSignedIn}) {
     const [displayFormErr, setDisplayFormErr] = useState(false)
     const [errorMessage,setErrorMessage] =useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const auth = new Auth({host:'http://localhost:3000'})
+    const auth = new Auth({host:'http://localhost:3000/api/v1'})
 
     const authenticateUser= async ()=>{
-       
         const response = await auth.signIn(email,password)
-        setIsSignedIn(true)
+       setIsSignedIn(true)
         navigation.navigate('Home')
-        
     }
-    
+
     const navigate = () => {
         navigation.navigate('signUp')
     }
     const homeBack = () => {
         navigation.navigate('IntroScreen')
     }
-    const Home =() => {
-        navigation.navigate("Home")
-        setIsSignedIn(true)
-        // console.log(isSignedIn)
-    }
+    // const Home =() => {
+    //     navigation.navigate("Home")
+    //     setIsSignedIn(true)
+    //     // console.log(isSignedIn)
+    // }
   
-    const validateForm =()=>{
-        var form_inputs = [email, password]
+    // const validateForm =()=>{
+    //     var form_inputs = [email, password]
        
-        if(form_inputs.includes('') || form_inputs.includes(undefined)){           
-            setErrorMessage("Incorrect email or password")
-            return setDisplayFormErr(true)
-        }
+    //     if(form_inputs.includes('') || form_inputs.includes(undefined)){           
+    //         setErrorMessage("Incorrect email or password")
+    //         return setDisplayFormErr(true)
+    //     }
         
-    }
+    // }
 
     return (
-      <View style={styles.mainView}>
+        <SafeAreaView style={styles.mainView}>
+        <StatusBar barStyle="light-content" />
         <View style={styles.TopView} >
         <ImageBackground
         source={require("../assets/HOMEPAGE.png")}
@@ -55,7 +55,7 @@ export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
         <View style={styles.BottomView}>
             <Icon onPress={homeBack} style={styles.Icon} name="chevron-left" size={60} color={'#212530'}/>
             <Text style={styles.Heading}>
-                Welcome,
+                Welcome 
             </Text>
             <View style={styles.FormView}>  
                 <TextInput 
@@ -95,7 +95,8 @@ export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
           :
           null
           }
-      </View>
+      
+      </SafeAreaView>
     )
   }
   
@@ -104,7 +105,7 @@ export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
     //   marginTop:40,
       flex: 1,
       flexDirection:'column',
-      backgroundColor: '#fff',
+      backgroundColor: '#212530',
       alignItems: 'center',
       justifyContent: 'center',
       
@@ -117,7 +118,8 @@ export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
     TopView:{
         // flex: 1,
         width: '100%',
-        // height: '100%',
+        // height: '0%',
+        
         alignItems: 'center',
       justifyContent: 'center',
     },
@@ -129,10 +131,10 @@ export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
         position: 'absolute',
         bottom: 0,
         width: '100%',
-        height: '80%',
+        height: '100%',
         backgroundColor: '#212530',
-        borderTopLeftRadius:30,
-        borderTopRightRadius:30
+        // borderTopLeftRadius:30,
+        // borderTopRightRadius:30
     },
     Heading: {
         color: '#fff',
@@ -182,7 +184,7 @@ export default function SignIn({navigation, setIsSignedIn, isSignedIn}) {
         color: '#fff',
         fontSize:20,
         // fontWeight: 'bold',
-        marginLeft: 30,
+        marginLeft: 10,
         marginTop: 20
     },
     Icon:{

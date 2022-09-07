@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, ScrollView   } from 'react-native';
+import React, {useState, useEffect} from 'react'
+import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, ScrollView, SafeAreaView, StatusBar  } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'
 import FormError from '../Components/FormError'
 // import FormSuccess from '../Components/FormSuccess'
 
-export default function SignUp({navigation}) {
+export default function SignUp({navigation, setIsSignedIn}) {
     const [firstName, setFirstnName] = useState ("")
     const [lastName, setLastName] = useState ("")
     const [email, setEmail] = useState ("")
@@ -22,18 +22,38 @@ export default function SignUp({navigation}) {
     const navigate = () => {
         navigation.navigate('signIn')
     }
+    
+    function handleSignUp() {
+        // setIsLoading(true)
+        const newUser = {
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            mobile: mobile,
+            password: password,
+            password_confirmation: confirmPassword 
+        }
 
-    //create user auth firebaase
-    // https://youtube.com/clip/UgkxOYoalj540gOW9_VveS_qPKgvJBHIk0GV
-    function createUser () {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(()=>{
-        })
-        .catch((err)=>{
-            setErrorMessage(err.message)
-            setDisplayFormErr(true)
+        fetch("http://localhost:3000/api/v1/auth", 
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify(newUser),
+      }) 
+        // .then(res => res.json())
+        .then(data => {
+            setIsSignedIn(true)
+            console.log(data,"FROM SIGNIN")
+        //   setUser(data.user)
+        
         })
     }
+        
+    
+
     const validateForm =()=>{
         var form_inputs = [firstName, lastName, email, mobile, password, confirmPassword]
         var passwords_match = password === confirmPassword
@@ -44,12 +64,15 @@ export default function SignUp({navigation}) {
         if(!passwords_match) {
             setErrorMessage("Passwords do not match")
             return setDisplayFormErr(true)
+            
         }
-        if(passwords_match) createUser()
-    }
-    
+        if(passwords_match) {
+            return handleSignUp()
+    }}
+   
     return (
-        <View style={styles.mainView}>
+        <SafeAreaView style={styles.mainView}>
+            <StatusBar barStyle="light-content" />
           <View style={styles.TopView} ></View>
 
           <ScrollView style={styles.BottomView}>
@@ -116,16 +139,16 @@ export default function SignUp({navigation}) {
           :
           null
           }
-        </View>
+        </SafeAreaView>
       )
     }
     
     const styles = StyleSheet.create({
       mainView: {
-        marginTop:40,
+        // marginTop:40,
         flex: 1,
         flexDirection:'column',
-        backgroundColor: '#fff',
+        backgroundColor: '#212530',
         alignItems: 'center',
         justifyContent: 'center',
         
@@ -137,14 +160,15 @@ export default function SignUp({navigation}) {
       },
       TopView:{
           width: '100%',
-          height: '10%',
-          display:'flex',
+        //   height: '0%',
+        //   display:'flex',
           alignItems: 'center',
           justifyContent: 'center',
+        //   backgroundColor: '#212530',
       },
       BottomView:{
           width: '100%',
-          height: '90%',
+          height: '100%',
           backgroundColor: '#212530',
           borderTopLeftRadius:30,
           borderTopRightRadius:30
@@ -161,7 +185,7 @@ export default function SignUp({navigation}) {
           display: "flex",
           flexDirection:'column',
           alignItems:'center',
-          marginTop:40
+          marginTop:30
       },
       TextInput:{
           width:'90%',
@@ -201,7 +225,7 @@ export default function SignUp({navigation}) {
         color: '#fff',
         fontSize:20,
         // fontWeight: 'bold',
-        marginLeft: 30,
+        marginLeft: 0,
         marginTop: 20
     }
       

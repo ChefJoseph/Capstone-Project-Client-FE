@@ -1,16 +1,16 @@
 import React from 'react'
 import {Text, SafeAreaView, StyleSheet, StatusBar} from 'react-native'
 
-const Profile =()=> {
+const Orders =()=> {
 
     return(
         <SafeAreaView style={styles.mainView}>
         <StatusBar barStyle="dark" />
-        <Text>Profile</Text>
+        <Text>Orders</Text>
         </SafeAreaView>
     )
 }
-export default Profile
+export default Orders
 const styles = StyleSheet.create({
     mainView: {
     //   marginTop:40,

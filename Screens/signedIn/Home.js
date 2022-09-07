@@ -1,52 +1,56 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
-// import { SectionGrid } from 'react-native-super-grid';
-import { useScrollToTop } from '@react-navigation/native';
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import Search from './Search'
+import Category from '../../Components/Category';
+import HeaderTabs from '../../Components/HeaderTabs';
+import MenuItems from '../../Components/MenuItems';
+// import ProductArray from '../../Components/ProductArray';
+import axios from "axios";
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
-  const [products, setProducts] = useState([])
-
-  const API_URL = "http://localhost:3000/api/v1/products"
-  const ref = React.useRef(null)
-  useScrollToTop(ref);
-
-  const getAPIData= ()=> {
-    axios
-    .get(API_URL)
-    // .then((res) => {
-    //   (res.data)})
-    .then(res => {
-      setProducts(res.data)
-      // console.log(res.data)
-    })
-    .finally(() => {setLoading(false);
-      
-    })
-  }
-  
-  const renderItem = (itemData) => {
-    return (
-      <View style={[styles.containerFlate, { backgroundColor: "#fff"}]}>
-        <Text style={styles.title}>Name:{itemData.item.product_name}</Text>
-        <Text style={styles.title}>${itemData.item.price}</Text>
-      </View>
-    )
+  // const [products, setProducts] = useState([])
+  const [activeTab, setActiveTab] = useState("Delivery");
+  const [foods, setFoods] = useState([])
+  const [search, setSearch] = useState("")
     
-  }
+  const API_URL = "http://localhost:3000/api/v1/products"
+  useEffect (()=> {
+      axios
+      .get(API_URL)
+      .then(res => {
+        setFoods(res.data)
+        // console.log(res.data)
+      })
+      .finally(() => {setLoading(false);
+      })
+    },[])
+  
+  const filteredItems = foods.filter(items=>       
+      items.product_name?.toLowerCase().includes(search.toLowerCase())||
+      items.category?.toLowerCase().includes(search.toLowerCase())||
+      items.description?.toLowerCase().includes(search.toLowerCase())
+      ) 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={{ backgroundColor: "#fff", flex: 1 }}>
+      <StatusBar barStyle="black" />
+    <View style={{ backgroundColor: "white", padding: 5}}>
       
-        <FlatList
+      <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab}/>
+      <Search search={search} setSearch={setSearch}/>
+      <Category foods={foods}/>
+      <MenuItems filteredItems={filteredItems}/>
+        {/* <FlatList
+            contentContainerStyle={styles.grid}
+            numColumns={2}
             ref={ref}
             data={products}
             renderItem={renderItem}
             keyExtractor={(item) => item.id }
-        />
+        /> */}
 
-        {isLoading && 
+        {/* {isLoading && 
             <TouchableOpacity
                 style={styles.buttonStyle}
                 onPress={getAPIData}>
@@ -54,46 +58,52 @@ export default function Home() {
             </TouchableOpacity>
         }
         
-        {/* <StatusBar /> */}
+        <StatusBar /> */}
+  
     </View>
+    </SafeAreaView>
 );
 }
-const styles = StyleSheet.create({
-  containerFlate: {
-      flex: 1,
-      margin: 16,
-      height: 150,
-      borderRadius: 8,
-      elevation: 4,
-      backgroundColor: '#c91111',
-      shadowColor: 'black',
-      shadowOpacity: 0.25,
-      shadowOffset: {
-          width: 0,
-          height: 2,
-      },
-      shadowRadius: 8,
-  },
-  buttonStyle: {
-      justifyContent:'center',
-      alignItems: 'center',
-      backgroundColor: '#DDDDDD',
-      padding: 10,
-      width: '100%',
-      marginTop: 400,
-  },
-  innerContainer: {
-      flex: 1,
-      borderRadius: 8,
-      justifyContent: 'center',
-      alignItems: 'center',
-  },
-  title: {
-      fontWeight: 'bold',
-      fontSize: 18,
-      color: 'black',
-  },
-});
+// const styles = StyleSheet.create({
+//   grid:{
+//     alignItems:"center"
+//   },
+//   containerFlat: {
+
+//       margin: 8,
+//       height: 150,
+//       width: '45%',
+//       borderRadius: 8,
+//       elevation: 2,
+//       backgroundColor: '#c91111',
+//       shadowColor: 'black',
+//       shadowOpacity: 0.1,
+//       shadowOffset: {
+//           width: 0,
+//           height: 2,
+//       },
+//       shadowRadius: 8,
+//   },
+//   buttonStyle: {
+//       // justifyContent:'center',
+//       // alignItems: 'center',
+//       // backgroundColor: '#DDDDDD',
+//       // padding: 10,
+//       // width: '45%',
+//       // marginTop: 400,
+//   },
+//   innerContainer: {
+//       flex: 1,
+//       borderRadius: 8,
+//       justifyContent: 'center',
+//       alignItems: 'center',
+//   },
+//   title: {
+//       fontWeight: 'bold',
+//       fontSize: 18,
+//       color: 'black',
+//   },
+// });
     
     // <View>
     //     <Text> Hello!</Text>

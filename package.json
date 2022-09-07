@@ -11,12 +11,16 @@
     "deploy-hosting": "npm run predeploy && firebase deploy --only hosting"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@babel/runtime": "^7.18.9",
     "@expo/webpack-config": "^0.17.0",
     "@react-native-async-storage/async-storage": "^1.17.10",
     "@react-navigation/bottom-tabs": "^6.3.3",
     "@react-navigation/stack": "^6.2.3",
     "axios": "^0.27.2",
+    "cache": "^3.0.0",
     "expo": "~46.0.9",
+    "expo-image-picker": "^13.3.1",
     "expo-status-bar": "~1.4.0",
     "firebase": "^9.9.3",
     "link": "^1.5.1",
@@ -24,15 +28,23 @@
     "react-dom": "18.0.0",
     "react-native": "^0.69.5",
     "react-native-app": "^1.0.0",
+    "react-native-bottom-search-bar": "^1.0.0",
+    "react-native-bouncy-checkbox": "^3.0.4",
+    "react-native-dynamic-vector-icons": "^1.2.0",
     "react-native-elements": "^3.4.2",
+    "react-native-helpers": "^0.0.2",
     "react-native-popup-menu": "^0.16.0",
+    "react-native-reanimated": "~2.9.1",
     "react-native-screens": "~3.15.0",
     "react-native-super-grid": "^4.5.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "~0.18.7"
+    "react-redux": "^8.0.2",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.18.13",
+    "react-native-web": "^0.18.9"
   },
   "private": true
 }

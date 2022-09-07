@@ -5,27 +5,37 @@ import IntroScreen from './Screens/IntroScreen';
 import SignIn from './Screens/SignIn'
 import SignUp from './Screens/SignUp'
 import Home from './Screens/signedIn/Home'
-import Search from './Screens/signedIn/Search'
+import Orders from './Screens/signedIn/Orders'
 import Profile from './Screens/signedIn/Profile'
 import Cart from './Screens/signedIn/Cart'
-import 'react-native-gesture-handler'
+// import 'react-native-gesture-handler'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 // import Authentication from './Screens/Authentication'
 // import axios from "axios"
+import { Provider as ReduxProvider } from "react-redux"
+import configureStore from "./redux/store"
 
 
+
+const store = configureStore()
  
 export default function App() {
   //isSigned in Video#9 <13:00
-  const [isSignedIn,setIsSignedIn]=useState(false)
+  const [isSignedIn,setIsSignedIn]=useState(true)
   const Stack = createStackNavigator()
   const Tab =createBottomTabNavigator()
+  const [user, setUser] = useState(null);
+ 
 
  
- 
+ const changeIsSignedInTrue=() =>{
+
+      setIsSignedIn(true)
+      console.log(isSignedIn)
+ }
   
   // if(isLoading) {
   //   return(
@@ -35,9 +45,13 @@ export default function App() {
   //   )
   // }
 
+function SignInComponent({navigation}) {
+  return <SignIn setIsSignedIn={setIsSignedIn} navigation={navigation}
+/>}
 
     if(isSignedIn == true) {
       return(
+        <ReduxProvider store={store}>
         <NavigationContainer >
           <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -46,8 +60,8 @@ export default function App() {
 
               if (route.name === 'Home') {
                 iconName = focused? 'md-home-sharp': 'md-home-sharp';
-              } else if (route.name === 'Search') {
-                iconName = focused ?'ios-search-sharp':'ios-search-sharp';
+              } else if (route.name === 'Orders') {
+                iconName = focused ?'ios-receipt-sharp':'ios-receipt-sharp';
               } else if (route.name === 'Cart') {
                 iconName = focused ? 'md-cart-sharp' : 'md-cart-sharp';
               } else if (route.name === 'Profile') {
@@ -62,23 +76,27 @@ export default function App() {
                   height: '10%'
                 }
             })}>
-            <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="Search" component={Search} />
-            <Tab.Screen name="Cart" component={Cart} />
-            <Tab.Screen name="Profile" component={Profile} />
+            <Tab.Screen name="Home" component={Home} options={{headerShown:false}} />
+            <Tab.Screen name="Orders" component={Orders} options={{headerShown:false}} />
+            <Tab.Screen name="Cart" component={Cart}  />
+            <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}} />
           </Tab.Navigator>
         </NavigationContainer>
+        </ReduxProvider>
       )
     } else {
       return(
+        <ReduxProvider store={store}>
         <NavigationContainer> 
-          <Stack.Navigator>
+          <Stack.Navigator >
             <Stack.Screen name ="IntroScreen" component={IntroScreen} options= {{headerShown:false}} />       
-            <Stack.Screen name ="signIn" component={SignIn} options= {{headerShown:false}} setIsSignedIn={setIsSignedIn} isSignedIn={isSignedIn}/>
+            <Stack.Screen name ="signIn" component={SignInComponent} options= {{headerShown:false}} 
+            />
             <Stack.Screen name ="signUp" component={SignUp} options= {{headerShown:false}} />
             <Stack.Screen name ="Home" component={Home} options= {{headerShown:false}} />
           </Stack.Navigator>
         </NavigationContainer>
+        </ReduxProvider>
       )
     }
   
@@ -91,7 +109,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   mainView: {
-    mar``gi``nTop:40,
+    marginTop:40,
     flex: 1,
     flexDirection:'column',
     backgroundColor: '#fff',
