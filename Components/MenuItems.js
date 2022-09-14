@@ -5,12 +5,10 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {useScrollToTop} from '@react-navigation/native'
-import axios from "axios";
+// import axios from "axios";
 
 
 export default function MenuItems({hideCheckbox, filteredItems}) {
-    
-
   const ref = React.useRef(null)
   useScrollToTop(ref);
   const dispatch = useDispatch();
@@ -54,8 +52,8 @@ return (
               <></>
             ) : (
               <BouncyCheckbox
-                iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
-                fillColor="grey"
+                iconStyle={{ borderColor: "green", borderRadius: 0 }}
+                fillColor="green"
                 isChecked={isFoodInCart(food, cartItems)}
                 onPress={(checkboxValue) => selectItem(food, checkboxValue)}
               />

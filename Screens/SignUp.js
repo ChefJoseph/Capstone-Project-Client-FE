@@ -46,7 +46,7 @@ export default function SignUp({navigation, setIsSignedIn}) {
         // .then(res => res.json())
         .then(data => {
             setIsSignedIn(true)
-            console.log(data,"FROM SIGNIN")
+            console.log(data,"FROM SIGNUP")
         //   setUser(data.user)
         
         })

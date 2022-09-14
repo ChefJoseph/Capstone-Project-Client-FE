@@ -9,15 +9,15 @@ const items = [
     text: "Food",
   },
   {
-    image: require("../assets/fast-food.png"),
+    image: require("../assets/desserts.png"),
     text: "Snack",
   },
   {
-    image: require("../assets/fast-food.png"),
+    image: require("../assets/soft-drink.png"),
     text: "Drink",
   },
   {
-    image: require("../assets/fast-food.png"),
+    image: require("../assets/shopping-bag.png"),
     text: "Merch",
   },
   {

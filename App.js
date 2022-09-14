@@ -1,42 +1,48 @@
 // import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Image, ActivityIndicator } from 'react-native';
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Button, Image, StyleSheet, Text, View } from 'react-native';
 import IntroScreen from './Screens/IntroScreen';
-import SignIn from './Screens/SignIn'
-import SignUp from './Screens/SignUp'
-import Home from './Screens/signedIn/Home'
-import Orders from './Screens/signedIn/Orders'
-import Profile from './Screens/signedIn/Profile'
-import Cart from './Screens/signedIn/Cart'
+import Home from './Screens/signedIn/Home';
+import Orders from './Screens/signedIn/Orders';
+import Profile from './Screens/signedIn/Profile';
+import SignIn from './Screens/SignIn';
+import SignUp from './Screens/SignUp';
+// import Cart from './Screens/signedIn/Cart'
+import CartToOrder from './Screens/signedIn/CartToOrder';
+import OrderCompleted from './Screens/signedIn/OrderCompleted';
 // import 'react-native-gesture-handler'
-import {NavigationContainer} from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 // import Authentication from './Screens/Authentication'
 // import axios from "axios"
-import { Provider as ReduxProvider } from "react-redux"
-import configureStore from "./redux/store"
-
+// import { Camera, useCameraDevices } from 'react-native-vision-camera';
+import { Provider as ReduxProvider } from "react-redux";
+import configureStore from "./redux/store";
 
 
 const store = configureStore()
  
 export default function App() {
   //isSigned in Video#9 <13:00
-  const [isSignedIn,setIsSignedIn]=useState(true)
+  const [isSignedIn,setIsSignedIn]=useState(false)
   const Stack = createStackNavigator()
   const Tab =createBottomTabNavigator()
   const [user, setUser] = useState(null);
- 
-
- 
- const changeIsSignedInTrue=() =>{
-
-      setIsSignedIn(true)
-      console.log(isSignedIn)
- }
+  const [refresh, setRefresh] = useState(false)
   
+  // const devices = useCameraDevices()
+  // const device = devices.back
+
+  // if (device == null) return <LoadingView />
+  // return ( 
+  //   <Camera
+  //     style={StyleSheet.absoluteFill}
+  //     device={device}
+  //     isActive={true}
+  //   />
+  // )
   // if(isLoading) {
   //   return(
   //     <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
@@ -48,8 +54,17 @@ export default function App() {
 function SignInComponent({navigation}) {
   return <SignIn setIsSignedIn={setIsSignedIn} navigation={navigation}
 />}
+function SignUpComponent({navigation}) {
+  return <SignUp setIsSignedIn={setIsSignedIn} navigation={navigation}
+/>}
+function CartComponent({navigation}) {
+  return <CartToOrder refresh={refresh} setRefresh={setRefresh} navigation={navigation}
+/>}
+ function OrdersComponent({navigation}) {
+  return <Orders refresh={refresh} setRefresh={setRefresh}  navigation={navigation}
+/>}
 
-    if(isSignedIn == true) {
+if(isSignedIn == true) {
       return(
         <ReduxProvider store={store}>
         <NavigationContainer >
@@ -77,8 +92,8 @@ function SignInComponent({navigation}) {
                 }
             })}>
             <Tab.Screen name="Home" component={Home} options={{headerShown:false}} />
-            <Tab.Screen name="Orders" component={Orders} options={{headerShown:false}} />
-            <Tab.Screen name="Cart" component={Cart}  />
+            <Tab.Screen name="Orders" component={OrdersComponent} options={{headerShown:false}} />
+            <Tab.Screen name="Cart" component={CartComponent} options= {{headerShown:false}} />
             <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}} />
           </Tab.Navigator>
         </NavigationContainer>
@@ -92,7 +107,7 @@ function SignInComponent({navigation}) {
             <Stack.Screen name ="IntroScreen" component={IntroScreen} options= {{headerShown:false}} />       
             <Stack.Screen name ="signIn" component={SignInComponent} options= {{headerShown:false}} 
             />
-            <Stack.Screen name ="signUp" component={SignUp} options= {{headerShown:false}} />
+            <Stack.Screen name ="signUp" component={SignUpComponent} options= {{headerShown:false}} />
             <Stack.Screen name ="Home" component={Home} options= {{headerShown:false}} />
           </Stack.Navigator>
         </NavigationContainer>

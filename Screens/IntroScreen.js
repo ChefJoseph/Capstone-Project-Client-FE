@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react'
+import React from 'react'
 import {StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground} from 'react-native'
 import '../assets/HOMEPAGE.png'
 import "../assets/PRIMETIME.png"

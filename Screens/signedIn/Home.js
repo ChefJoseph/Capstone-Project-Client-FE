@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
 import Search from './Search'
 import Category from '../../Components/Category';
 import HeaderTabs from '../../Components/HeaderTabs';
@@ -17,7 +17,9 @@ export default function Home() {
   const API_URL = "http://localhost:3000/api/v1/products"
   useEffect (()=> {
       axios
-      .get(API_URL)
+      .get(API_URL, 
+        // { headers: {'Authorization': `token ${access_token}` }}
+        )
       .then(res => {
         setFoods(res.data)
         // console.log(res.data)
@@ -56,9 +58,9 @@ export default function Home() {
                 onPress={getAPIData}>
                 <Text>Simple Get Call</Text>
             </TouchableOpacity>
-        }
+        } */}
         
-        <StatusBar /> */}
+        {/* <StatusBar /> */}
   
     </View>
     </SafeAreaView>

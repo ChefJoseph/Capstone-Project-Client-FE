@@ -17,12 +17,15 @@ function Search ({search, setSearch}) {
           searchIcon={{ size: 24 }}
           onChangeText={(text) => searchFilterFunction(text)}
           onClear={(text) => searchFilterFunction('')}
-          placeholder="Type Here..."
+          placeholder="Search food, snack, drink, merch"
           value={search}
             inputStyle={{backgroundColor: '#eee'}}
             inputContainerStyle={{backgroundColor: '#eee'}}
             containerStyle={{backgroundColor: '#eee',
-            borderWidth: 0, borderRadius: 30,  borderWidth: 0, 
+            borderWidth: 0, 
+            borderRadius: 30,  
+            borderWidth: 0,
+            padding: 3, 
             shadowColor: 'white', //no effect
             borderBottomColor: 'transparent',
             borderTopColor: 'transparent', marginTop: 15}

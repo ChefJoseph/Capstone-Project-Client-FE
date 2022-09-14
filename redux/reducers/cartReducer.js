@@ -17,7 +17,7 @@ let cartReducer = (state = defaultState, action) =>{
                 newState.selectedItems = {
                     items: [
                     ...newState.selectedItems.items.filter(
-                        (item) => item.product_name !== action.payload.product_name
+                        (item) => item.item_name !== action.payload.item_name
                     ),
                     ],
                 };
@@ -25,6 +25,10 @@ let cartReducer = (state = defaultState, action) =>{
                 console.log(JSON.stringify(newState), "From Cart Reducer")
                 return newState
         }
+        case 'EMPTY_CART':
+         return {
+        
+      }
         default:
             return state
     }

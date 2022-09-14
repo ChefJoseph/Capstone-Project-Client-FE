@@ -4,7 +4,7 @@ import FormError from '../Components/FormError'
 import '../assets/HOMEPAGE.png'
 import Icon from 'react-native-vector-icons/Feather'
 import Auth from '../Components/auth'
-
+import { useDispatch } from 'react-redux';
 
 
 export default function SignIn({navigation,setIsSignedIn}) {
@@ -12,6 +12,7 @@ export default function SignIn({navigation,setIsSignedIn}) {
     const [errorMessage,setErrorMessage] =useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
 
     const auth = new Auth({host:'http://localhost:3000/api/v1'})
 
@@ -19,6 +20,7 @@ export default function SignIn({navigation,setIsSignedIn}) {
         const response = await auth.signIn(email,password)
        setIsSignedIn(true)
         navigation.navigate('Home')
+        dispatch({type: 'set_user', payload: response.data})
     }
 
     const navigate = () => {
@@ -46,12 +48,12 @@ export default function SignIn({navigation,setIsSignedIn}) {
     return (
         <SafeAreaView style={styles.mainView}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.TopView} >
-        <ImageBackground
+        {/* <View style={styles.TopView} > */}
+        {/* <ImageBackground
         source={require("../assets/HOMEPAGE.png")}
         style={styles.BackgroundHome}
-        >
-        
+        > */}
+        {/* <View> */}
         <View style={styles.BottomView}>
             <Icon onPress={homeBack} style={styles.Icon} name="chevron-left" size={60} color={'#212530'}/>
             <Text style={styles.Heading}>
@@ -86,8 +88,8 @@ export default function SignIn({navigation,setIsSignedIn}) {
                 </Text>
             </View>
         </View>
-        </ImageBackground>
-        </View>
+        {/* </ImageBackground> */}
+        {/* </View> */}
 
         
         {displayFormErr == true?
