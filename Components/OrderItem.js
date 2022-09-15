@@ -17,7 +17,8 @@ export default function OrderItem({ item }) {
       }}
     >
       <Text style={{ fontWeight: "600", fontSize: 16 }}>{item.product_name}</Text>
-      <Text style={{ opacity: 1, fontSize: 16 }}>${item.price}.00</Text>
+     
+      <Text style={{ opacity: 2, fontSize: 14 }}>Qty: 1        ${item.price}.00</Text>
     </View>
   );
 }

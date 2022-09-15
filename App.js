@@ -60,8 +60,11 @@ function SignUpComponent({navigation}) {
 function CartComponent({navigation}) {
   return <CartToOrder refresh={refresh} setRefresh={setRefresh} navigation={navigation}
 />}
- function OrdersComponent({navigation}) {
+function OrdersComponent({navigation}) {
   return <Orders refresh={refresh} setRefresh={setRefresh}  navigation={navigation}
+/>}
+function ProfileComponent({navigation}) {
+  return <Profile setIsSignedIn={setIsSignedIn}  navigation={navigation}
 />}
 
 if(isSignedIn == true) {
@@ -94,7 +97,7 @@ if(isSignedIn == true) {
             <Tab.Screen name="Home" component={Home} options={{headerShown:false}} />
             <Tab.Screen name="Orders" component={OrdersComponent} options={{headerShown:false}} />
             <Tab.Screen name="Cart" component={CartComponent} options= {{headerShown:false}} />
-            <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}} />
+            <Tab.Screen name="Profile" component={ProfileComponent} options={{headerShown:false}} />
           </Tab.Navigator>
         </NavigationContainer>
         </ReduxProvider>

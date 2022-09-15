@@ -76,9 +76,9 @@ export default function Cart({ navigation, setRefresh }) {
 }
 
 
-const navigate = () => {
-  navigation.navigate('OrderCompleted')
-}
+// const navigate = () => {
+//   navigation.navigate('OrderCompleted')
+// }
 
 //   const checkoutModalContent = () => {
         
@@ -90,7 +90,7 @@ const navigate = () => {
           <Text style={styles.Header}>Your items</Text>
           <ScrollView style= {{height: 400}} showsVerticalScrollIndicator={false}>
             {items.map((item, index) => (
-              <OrderItem key={index} item={item} style={styles.OrderItem} /> 
+              <OrderItem key={index} item={item} /> 
             
             ))}
             {/* //uncomment here */}
@@ -121,17 +121,18 @@ const navigate = () => {
                   // setModalVisible(false);
                 }}
               >
-                <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
-                <Text
+                <Text style={{ color: "white",fontWeight:'bold', fontSize: 18 }}>Checkout</Text>
+                {/* <Text
                   style={{
                     position: "absolute",
                     right: 20,
                     color: "white",
-                    fontSize: 15,
+                    fontSize: 18,
                     top: 17,
+                    fontWeight:'bold',
                   }}
                 >
-                </Text>
+                </Text> */}
               </TouchableOpacity>
             </View>
           </View>

@@ -44,7 +44,7 @@ function ProductArray() {
       return (
         <View style={[styles.containerFlat, { backgroundColor: "#fff"}]}>
           <Text style={styles.title}>{itemData.item.product_name}</Text>
-          <Text style={styles.title}>${itemData.item.price}</Text>
+          <Text style={styles.titleprice}>${itemData.item.price}</Text>
           <BouncyCheckBox
           fillColor="green"
           onPress={(checkboxValue) => selectItem(itemData, checkboxValue)}
@@ -111,6 +111,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'black',
     },
+    titleprice: {
+      fontWeight: '200',
+      fontSize: 12,
+      color: 'black',
+  },
   });
 
 export default ProductArray

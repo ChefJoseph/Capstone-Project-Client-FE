@@ -22,27 +22,38 @@ function handleOrder() {
       {/* green checkmark */}
       <View
         style={{
-          margin: 15,
-          alignItems: "center",
+          margin: 40,
+          alignItems: "left",
           height: "100%",
         }}
       >
+        <View style={{flexDirection: "row", alignItems: "center", left: 19}}>
         <LottieView
-          style={{ height: 200, alignSelf: "center", marginBottom: 30 }}
+          style={{ height: 50,  }}
           source={require("../../assets/check-mark.json")}
           autoPlay
           speed={1}
           loop={false}
         />
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 20 }}>
-          Your order at has been placed
+        <Text style={{ fontSize: 20, fontWeight: "regular", }}>
+          Order placed
+        </Text>
+        </View>
+        <Text style={{ fontSize: 20, fontWeight: "regular", marginBottom: 20, left: 69, marginTop: 5}}>
+          Preparing order
+        </Text>
+        <Text style={{ fontSize: 20, fontWeight: "regular", marginBottom: 20, left: 69}}>
+          Out for delivery
+        </Text>
+        <Text style={{ fontSize: 20, fontWeight: "regular", marginBottom: 20, left: 69}}>
+          Delivery Complete
         </Text>
    
           <LottieView
             style={{ height: 300, alignSelf: "center", marginTop: 5 }}
             source={require("../../assets/burgerAnimation.json")}
             autoPlay
-            speed={.9}
+            speed={.7}
           />
       
       </View>
@@ -56,17 +67,8 @@ function handleOrder() {
                   // setModalVisible(false);
                 }}
               >
-                <Text style={{ color: "white", fontSize: 20 }}>New Order</Text>
-                <Text
-                  style={{
-                    position: "absolute",
-                    right: 20,
-                    color: "white",
-                    fontSize: 15,
-                    top: 17,
-                  }}
-                >
-                </Text>
+                <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>New Order</Text>
+            
               </TouchableOpacity>
             {/* </View> */}
     </SafeAreaView>
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
         width: 300,
         // display:'flex',
         // justifyContent:'center',
-        bottom: 90,
+        bottom: 139,
         alignSelf: 'center'
       
       }

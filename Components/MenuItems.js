@@ -1,11 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Touchable } from "react-native";
 import { Divider } from "react-native-elements";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {useScrollToTop} from '@react-navigation/native'
 // import axios from "axios";
+
+
 
 
 export default function MenuItems({hideCheckbox, filteredItems}) {
@@ -21,13 +23,15 @@ export default function MenuItems({hideCheckbox, filteredItems}) {
         checkboxValue: checkboxValue,
       },
     });
-
   const cartItems = useSelector(
     (state) => state.cartReducer.selectedItems.items
   );
-
   const isFoodInCart = (food, cartItems) =>
     Boolean(cartItems.find((item) => item.product_name === food.product_name));
+
+
+     
+
 
 return (
   <ScrollView showsVerticalScrollIndicator={false} ref={ref}>
@@ -45,20 +49,37 @@ return (
               />
               <View style={{ width: 240, justifyContent: "space-evenly" }}>
                   <Text style={styles.titleStyle}>{food.product_name}</Text>
-                  <Text style={styles.titleStyle}>${food.price}</Text>
-              </View> 
+                  <Text style={styles.titleStylePrice}>${food.price}</Text>
+              </View>
+
+
             <View style= {styles.checkbox} >
             {hideCheckbox ? (
               <></>
             ) : (
               <BouncyCheckbox
-                iconStyle={{ borderColor: "green", borderRadius: 0 }}
-                fillColor="green"
+                style={{ borderColor: '#64D80B', borderRadius: 40,  }}
+                innerIconStyle={{ borderWidth: 2, borderColor: 'grey', width:60, height: 27, alignContent: "right", marginLeft: 20}}
+                fillColor='#fff'
+                text="Custom Checkbox"
                 isChecked={isFoodInCart(food, cartItems)}
                 onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+               
               />
             )}
+  {/* <View style = {{flexDirection: "row",}}>
+  <TouchableOpacity>
+    <Text>-</Text>
+  </TouchableOpacity>
+
+  <TouchableOpacity>
+    <Text>+</Text>
+  </TouchableOpacity>
+</View> */}
             </View>
+
+
+
           </View>
             <Divider
             width={1}
@@ -89,11 +110,50 @@ const styles = StyleSheet.create({
       fontWeight: "600",
       left: 10
     },
+    titleStylePrice: {
+      fontSize: 16,
+      fontWeight: "400",
+      left: 10
+    },
    
     checkbox: {
-        top: 50,
+        top: 45,
         // bottom: 0, 
-        right: 25
+        right: 50
       
-    }
+    },
+
+
+
+
+    // viewOuter: {
+    //   flexDirection: 'row',
+    // },
+    // viewBtnLeft: {
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   fontSize: 18,
+      
+    //   borderWidth: 1,
+    //   borderColor: '#eeeeee',
+     
+    // },
+    // viewBtnRight: {
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   borderWidth: 1,
+    //   borderColor: '#eeeeee',
+   
+    // },
+    // viewTextInput: {
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   fontSize: 18,
+    //   borderWidth: 1,
+    //   borderColor: '#eeeeee',
+   
+    // },
+    // labelStyle:{
+    //   fontSize: 10,
+    // },
   });

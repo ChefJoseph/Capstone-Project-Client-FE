@@ -58,7 +58,7 @@ SubTitle:{
 Button:{
     width:200,
     height:52,
-    backgroundColor:'rgba(52, 52, 52, 0.4)',
+    backgroundColor:'rgba(52, 52, 52, 0)',
     borderRadius:10,
     marginTop:'133%',
     marginLeft: '25%',
@@ -71,7 +71,7 @@ Button:{
 ButtonText:{
     fontWeight:'bold',
     fontSize:18,
-    color: '#212530'
+    color: 'rgba(52, 52, 52, 0.3)'
  
 }
 }

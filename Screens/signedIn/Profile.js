@@ -3,8 +3,9 @@ import {Text, View, SafeAreaView, StyleSheet, StatusBar, TouchableOpacity} from 
 import axios from "axios";
 import Auth from '../../Components/auth'
 import { useDispatch } from 'react-redux';
+import { Avatar } from 'react-native-elements';
 
-const Profile =({navigation})=> {
+const Profile =({navigation, setIsSignedIn })=> {
     const [profile, setProfiles] = useState([])
     const dispatch = useDispatch()
     
@@ -23,6 +24,7 @@ const Profile =({navigation})=> {
         .then(res => {
           setProfiles(res.data)
           console.log(res.data)
+         
         })
         .finally(() => {
         })
@@ -47,7 +49,8 @@ const Profile =({navigation})=> {
               // setUser(null)
               dispatch({type: 'opposite_set_user', payload: r.data})
             }
-          });
+          })
+          .then ( setIsSignedIn(false))
         }
       
 
@@ -55,13 +58,30 @@ const Profile =({navigation})=> {
     return(
         <SafeAreaView style={styles.mainView}>
         <StatusBar barStyle="dark" />
-            <View style={{alignItems: "left", justifyContent:'center'}}>
-            <Text>Avatar_uri:</Text>
-            <Text>Name: {profile.first_name} {profile.last_name}</Text>
-            <Text>Email: {profile.email}</Text>
-            <Text>Mobile: {profile.mobile}</Text>
-            <Text>ID_uri: </Text>
-            </View>
+        <View>
+          <Text style={styles.Header1}>Profile</Text>
+            <View style={{alignItems: "center"}}>
+            <Avatar
+              rounded
+              size="xlarge"
+              source={require(
+              '../../assets/shohei.jpeg')
+              }
+            />
+            {/* <Text style={styles.subtotalText}>Avatar_uri:</Text> */}
+            <Text style={styles.subtotalText}>Change avatar</Text>
+            <Text style={styles.subtotalText2}>{profile.first_name} {profile.last_name}</Text>
+            {/* <Text style={styles.subtotalText}>Email:   {profile.email}</Text>
+            <Text style={styles.subtotalText}>Mobile:    {profile.mobile}</Text> */}
+            <Avatar
+              size="xlarge"
+              title="LW"
+              style={{height: 120,
+                width: 180}}
+              source={require('../../assets/asiandriverlicense.jpeg')
+                }
+            />
+            <Text style={styles.subtotalText}>Change license</Text>
             <TouchableOpacity style={styles.Button} onPress={handleLogoutClick}>
                     <Text style={styles.ButtonText}
                     >
@@ -69,6 +89,8 @@ const Profile =({navigation})=> {
                     </Text>
                     
             </TouchableOpacity>
+            </View>
+        </View>
         </SafeAreaView>
     )
 }
@@ -80,26 +102,56 @@ const styles = StyleSheet.create({
       backgroundColor: "#fff",
       // backgroundColor: '#212530',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'left',
+      
+    },
+    Header1: {
+      textAlign: "left",
+      fontWeight: "600",
+      fontSize: 35,
+      marginBottom: 40,
+      marginTop: 40,
+      color: "black",
+      
+    },
+    subtotalText: {
+      textAlign: "left",
+      fontWeight: "400",
+      fontSize: 15,
+      marginBottom: 10,
+      color: "grey",
+      padding: 10
+      
+    },
+    subtotalText2: {
+      textAlign: "left",
+      fontWeight: "400",
+      fontSize: 15,
+      marginBottom: 10,
+      color: "black",
+      padding: 10
       
     },
     Button:{
-        width:200,
-        height:52,
-        backgroundColor:'rgba(52, 52, 52, 0.4)',
-        borderRadius:10,
+        width:300,
+        height:48,
+        backgroundColor:'#000',
+        borderRadius:30,
         marginTop:'120%',
         // marginLeft: '12%',
         // display:'flex',
         justifyContent:'center',
-        alignItems:'center',
+        // alignItems:'flex-end',
         // textAlign:'center'
+        postion: 'absolute',
+        alignItems: "center",
+        bottom: 242
     
     },
     ButtonText:{
         fontWeight:'bold',
         fontSize:18,
-        color: '#212530'
+        color: '#fff'
      
     }
 })

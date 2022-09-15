@@ -22,7 +22,6 @@ export default function Home() {
         )
       .then(res => {
         setFoods(res.data)
-        // console.log(res.data)
       })
       .finally(() => {setLoading(false);
       })
