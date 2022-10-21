@@ -1,0 +1,3 @@
+Implementing a camera for ticket scanning. I used a react-vision-camera library. It crashed my app and luckily I was able to roll back saved data on github. After completing the food delivery app portion, I want to include the camera so that the user can quickly provide information to their seat. 
+
+Further development: I am working on DRYing the code. The bulk of React and Native was similar enough like using reusable declarative components. However there were many differences including syntax, react-router vs react native naivation, local storage vs async storage, and CSS formatting. Native doesn’t leverage CSS and HTML so I learned to utilize Stylesheet. Some element tags were also different <p> as <text>, and <div> as <view>
