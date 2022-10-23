@@ -11,13 +11,12 @@
   <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.00.51.png" width="180" />
 </p>
 <br>
-<br>
 <h3>Purpose:</h3> Food and merchandise delivery app for Dodgers Stadium (sporting event).
 <br>
 <h3>Languages:</h3> React Native, Rails
 <br>
-<h3>User Stories:</h3> 
-<br>a) A Spectator that doesn’t want to miss the action, or is buying for the group.
+<h3>User Stories:</h3>
+a) A Spectator that doesn’t want to miss the action, or is buying for the group.
 <br>b) A Parent with toddlers or children who will pay for the convenience of having food delivered. 
 <br>c) An Elderly or Disabled spectator that struggles with access (e.g. stadium stairs).
 <br>
