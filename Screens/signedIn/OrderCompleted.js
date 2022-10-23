@@ -16,16 +16,16 @@ export default function OrderCompleted() {
         }}
       >
         <View style={styles.lottecontainer}>
-        <LottieView
-          style={{ height: 50,  }}
-          source={require("../../assets/check-mark.json")}
-          autoPlay
-          speed={1}
-          loop={false}
-        />
-        <Text style={styles.orderplaced}>
-          Order placed
-        </Text>
+          <LottieView
+            style={{ height: 50,  }}
+            source={require("../../assets/check-mark.json")}
+            autoPlay
+            speed={1}
+            loop={false}
+          />
+          <Text style={styles.orderplaced}>
+            Order placed
+          </Text>
         </View>
         <Text style={styles.ordersteps}>
           Preparing order
@@ -80,18 +80,15 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   button: {
-      postion: 'absolute',
-      // marginTop: 20,
-      backgroundColor: "black",
-      alignItems: "center",
-      padding: 13,
-      borderRadius: 30,
-      width: 300,
-      // display:'flex',
-      // justifyContent:'center',
-      bottom: 139,
-      alignSelf: 'center'
-    
+    postion: 'absolute',
+    // marginTop: 20,
+    backgroundColor: "black",
+    alignItems: "center",
+    padding: 13,
+    borderRadius: 30,
+    width: 300,
+    bottom: 139,
+    alignSelf: 'center'
   },
   buttontext:{
     color: "white", 
