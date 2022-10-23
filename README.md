@@ -10,16 +10,9 @@
   <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.01.33.png" width="180" />
   <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.00.51.png" width="180" />
 </p>
-
-Figma:
-https://www.figma.com/file/CpSa8Ov4jd6rZ1nlc9UwjU/GOOGLE-UX--STADIUM-DELIVERY-APP?node-id=145%3A422
-Wireframe:
-<image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-Wireframe.png"/>
-Mockup:
-<image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-%20Mockup.png"/>
-
-
-Purpose: Food and merchandise delivery app for Dodgers Stadium (sporting event).
+<br>
+<br>
+<h2>Purpose:</h2> Food and merchandise delivery app for Dodgers Stadium (sporting event).
 
 Languages: React Native, Rails
 
@@ -31,8 +24,12 @@ MVP goals: Login Auth, Create profile, Model/validations, CRUD, Database, Shoppi
 
 Stretch goals: QR code scanning for ticket confirmation, Photo Storage, Checking if ticket is valid, Push notification, E-mail or text confirmation for signup/receipt, Payment type input, Mock Payment processing(Stripe?), Icon animations, Multiple vendors, Multiple stadiums, Analytics for Vendor UI, Google maps library for location/delivery rendering
 
-
-
+Figma:
+https://www.figma.com/file/CpSa8Ov4jd6rZ1nlc9UwjU/GOOGLE-UX--STADIUM-DELIVERY-APP?node-id=145%3A422
+Wireframe:
+<image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-Wireframe.png"/>
+Mockup:
+<image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-%20Mockup.png"/>
 
 Implementing a camera for ticket scanning. I used a react-vision-camera library. It crashed my app and luckily I was able to roll back saved data on github. After completing the food delivery app portion, I want to include the camera so that the user can quickly provide information to their seat. 
 
