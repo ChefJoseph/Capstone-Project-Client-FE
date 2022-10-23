@@ -5,10 +5,10 @@
   <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2013.59.13.png" width="200" />
 </p>
 <p float="center">
-  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.00.38.png" width="130" />
-  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.01.03.png" width="130" />
-  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.01.33.png" width="130" />
-  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.00.51.png" width="130" />
+  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.00.38.png" width="180" />
+  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.01.03.png" width="180" />
+  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.01.33.png" width="180" />
+  <img src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Simulator%20Screen%20Shot%20-%20iPhone%2013%20-%202022-10-23%20at%2014.00.51.png" width="180" />
 </p>
 
 Figma:
