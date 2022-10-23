@@ -7,9 +7,6 @@ import { useSelector } from "react-redux";
 import {useScrollToTop} from '@react-navigation/native'
 // import axios from "axios";
 
-
-
-
 export default function MenuItems({hideCheckbox, filteredItems}) {
   const ref = React.useRef(null)
   useScrollToTop(ref);
@@ -29,34 +26,29 @@ export default function MenuItems({hideCheckbox, filteredItems}) {
   const isFoodInCart = (food, cartItems) =>
     Boolean(cartItems.find((item) => item.product_name === food.product_name));
 
-
-     
-
-
 return (
   <ScrollView showsVerticalScrollIndicator={false} ref={ref}>
-        {filteredItems.map((food, index) => (
-          <View key={index} > 
-            <View style={styles.menuItemStyle}>            
-              <Image
-              source={require("../assets/fast-food.png")}
-              // source={{uri: food.product_image_url}}
-              style={{
-                  width: 75,
-                  height: 75,
-                  borderRadius: 8,
-              }}
-              />
-              <View style={{ width: 240, justifyContent: "space-evenly" }}>
-                  <Text style={styles.titleStyle}>{food.product_name}</Text>
-                  <Text style={styles.titleStylePrice}>${food.price}</Text>
-              </View>
-
-
-            <View style= {styles.checkbox} >
+    {filteredItems.map((food, index) => (
+      <View key={index}> 
+        <View style={styles.menuItemStyle}>            
+          <Image
+          // source={require("../assets/menuitems/hotdog.png")}
+            source={{uri: food.product_image_url}}
+            style={{
+              width: 75,
+              height: 75,
+              // borderRadius: 8,
+              resizeMode: 'contain',
+            }}
+          />
+          <View style={{ width: 240, justifyContent: "space-evenly" }}>
+            <Text style={styles.titleStyle}>{food.product_name}</Text>
+            <Text style={styles.titleStylePrice}>${food.price}</Text>
+          </View>
+          <View style= {styles.checkbox}>
             {hideCheckbox ? (
               <></>
-            ) : (
+              ) : (
               <BouncyCheckbox
                 style={{ borderColor: '#64D80B', borderRadius: 40,  }}
                 innerIconStyle={{ borderWidth: 2, borderColor: 'grey', width:60, height: 27, alignContent: "right", marginLeft: 20}}
@@ -64,96 +56,38 @@ return (
                 text="Custom Checkbox"
                 isChecked={isFoodInCart(food, cartItems)}
                 onPress={(checkboxValue) => selectItem(food, checkboxValue)}
-               
               />
             )}
-  {/* <View style = {{flexDirection: "row",}}>
-  <TouchableOpacity>
-    <Text>-</Text>
-  </TouchableOpacity>
-
-  <TouchableOpacity>
-    <Text>+</Text>
-  </TouchableOpacity>
-</View> */}
-            </View>
-
-
-
           </View>
-            <Divider
-            width={1}
-            // orientation="vertical"
-            style={{ marginHorizontal: 20 }}
-            />
-          </View>
-      ))}
+        </View>
+          <Divider width={1} style={{ marginHorizontal: 20 }}/>
+      </View>
+    ))}
   </ScrollView>
-  );
+);
 }
 
 const styles = StyleSheet.create({
-    // container:{
-    //     flex: 1,
-    //     height: 175
-    //     },
-        
-    menuItemStyle: {
-        // flex:1,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      margin: 15,
-    },
+  menuItemStyle: {
+      // flex:1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 15,
+  },
 
-    titleStyle: {
-      fontSize: 19,
-      fontWeight: "600",
-      left: 10
-    },
-    titleStylePrice: {
-      fontSize: 16,
-      fontWeight: "400",
-      left: 10
-    },
-   
-    checkbox: {
-        top: 45,
-        // bottom: 0, 
-        right: 50
-      
-    },
-
-
-
-
-    // viewOuter: {
-    //   flexDirection: 'row',
-    // },
-    // viewBtnLeft: {
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   fontSize: 18,
-      
-    //   borderWidth: 1,
-    //   borderColor: '#eeeeee',
-     
-    // },
-    // viewBtnRight: {
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   borderWidth: 1,
-    //   borderColor: '#eeeeee',
-   
-    // },
-    // viewTextInput: {
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   fontSize: 18,
-    //   borderWidth: 1,
-    //   borderColor: '#eeeeee',
-   
-    // },
-    // labelStyle:{
-    //   fontSize: 10,
-    // },
+  titleStyle: {
+    fontSize: 19,
+    fontWeight: "600",
+    left: 10
+  },
+  titleStylePrice: {
+    fontSize: 16,
+    fontWeight: "400",
+    left: 10
+  },
+  checkbox: {
+      top: 45,
+      // bottom: 0, 
+      right: 50 
+  },
   });

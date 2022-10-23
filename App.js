@@ -31,25 +31,6 @@ export default function App() {
   const Tab =createBottomTabNavigator()
   const [user, setUser] = useState(null);
   const [refresh, setRefresh] = useState(false)
-  
-  // const devices = useCameraDevices()
-  // const device = devices.back
-
-  // if (device == null) return <LoadingView />
-  // return ( 
-  //   <Camera
-  //     style={StyleSheet.absoluteFill}
-  //     device={device}
-  //     isActive={true}
-  //   />
-  // )
-  // if(isLoading) {
-  //   return(
-  //     <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-  //       <ActivityIndicator size="large"/>
-  //     </View>
-  //   )
-  // }
 
 function SignInComponent({navigation}) {
   return <SignIn setIsSignedIn={setIsSignedIn} navigation={navigation}
@@ -117,11 +98,6 @@ if(isSignedIn == true) {
         </ReduxProvider>
       )
     }
-  
-    // <View style={styles.mainView}>
-    //   <SignIn/>
-    //   {/* <SignUp/> */} 
-    // </View>
   
 }
 

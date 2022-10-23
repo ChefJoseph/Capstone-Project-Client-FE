@@ -24,7 +24,7 @@ const IntroScreen =({navigation})=> {
             <TouchableOpacity style={styles.Button} onPress={navigate}>
                     <Text style={styles.ButtonText}
                     >
-                    Enter
+                   Enter
                     </Text>
             </TouchableOpacity>
         </ImageBackground>

@@ -10,7 +10,7 @@ let cartReducer = (state = defaultState, action) =>{
                 console.log("ADD TO CART");
 
                 newState.selectedItems = {
-                items: [...newState.selectedItems.items, action.payload],
+                items: [...newState.selectedItems.items, action.payload]
                 };
             } else {
                 console.log("REMOVE FROM CART");

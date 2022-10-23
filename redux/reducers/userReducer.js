@@ -9,7 +9,6 @@ let userReducer = (state = defaultState, action) =>{
 
             if (action.payload) {
                 console.log("set_user");
-
                 return {user: action.payload}
             } else {
                 return state
@@ -18,7 +17,6 @@ let userReducer = (state = defaultState, action) =>{
         case 'opposite_set_user':{
             console.log("opposite_set_user")
             return {user: null}
-            
         }
         default:
             return state
