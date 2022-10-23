@@ -2,7 +2,7 @@
 Figma:
 https://www.figma.com/file/CpSa8Ov4jd6rZ1nlc9UwjU/GOOGLE-UX--STADIUM-DELIVERY-APP?node-id=145%3A422
 Wireframe:
-<image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-wireframe.png"/>
+<image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-Wireframe.png"/>
 Mockup:
 <image src="https://github.com/ChefJoseph/StadiumApp-Frontend/blob/main/assets/Stadium-%20Mockup.png"/>
 
