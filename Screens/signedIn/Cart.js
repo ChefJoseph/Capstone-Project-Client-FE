@@ -90,6 +90,7 @@ return (
           style={styles.button}
           onPress={() => {
           handleOrder()
+         
           }}
         >
           <Text style={{ color: "white",fontWeight:'bold', fontSize: 18 }}>Checkout</Text>

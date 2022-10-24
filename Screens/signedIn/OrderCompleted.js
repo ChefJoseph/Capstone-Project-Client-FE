@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LottieView from "lottie-react-native";
 
 export default function OrderCompleted() {
-
+  const dispatch = useDispatch
+  
+  function clearCart(){
+    // dispatch({type: "EMPTY_CART"})
+  }
   return (
     <SafeAreaView style={styles.container}>
       {/* green checkmark */}
@@ -46,11 +50,7 @@ export default function OrderCompleted() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-        //   clearCart()
-          // navigation.navigate("OrderCompleted")
-        //   addOrderToFireBase();
-          // setModalVisible(false);
-        }}
+       }}
       >
         <Text style={styles.buttontext}>New Order</Text>
       </TouchableOpacity>

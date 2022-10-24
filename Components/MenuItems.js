@@ -20,6 +20,7 @@ export default function MenuItems({hideCheckbox, filteredItems}) {
         checkboxValue: checkboxValue,
       },
     });
+
   const cartItems = useSelector(
     (state) => state.cartReducer.selectedItems.items
   );
