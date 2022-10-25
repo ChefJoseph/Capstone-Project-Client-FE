@@ -13,7 +13,7 @@
 <br>
 <h3>Purpose:</h3> Food and merchandise delivery app for Dodgers Stadium (sporting event).
 <br>
-<h3>Technologies:</h3> React Native, Redux, Rails, Expo, Axios, Async Storage.
+<h3>Technologies:</h3> React Native, Redux, Rails, Expo, Axios, Async Storage, devise-token-auth.
 <br>
 <h3>User Stories:</h3>
 a) A Spectator that doesn’t want to miss the action, or is buying for the group.
