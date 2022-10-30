@@ -70,7 +70,6 @@ return (
 
 const styles = StyleSheet.create({
   menuItemStyle: {
-      // flex:1,
     flexDirection: "row",
     justifyContent: "space-between",
     margin: 15,

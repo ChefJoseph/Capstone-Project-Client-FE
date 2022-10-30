@@ -102,13 +102,13 @@ return (
 }
 const styles = StyleSheet.create({
   mainView: {
-      // marginTop:40,
-      flex: 1,
-        // backgroundColor: '#212530',
-      backgroundColor: "#fff",
-      flexDirection:'column',
-      alignItems: 'center',
-      justifyContent: 'left',
+    // marginTop:40,
+    flex: 1,
+      // backgroundColor: '#212530',
+    backgroundColor: "#fff",
+    flexDirection:'column',
+    alignItems: 'center',
+    justifyContent: 'left',
   },
   Header1: {
     textAlign: "left",
@@ -124,11 +124,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 10,
     color: "black"
-  },
-  modalCheckoutContainer: {
-  },
-  OrderItem: {
-
   },
   subtotalContainer: {
     flexDirection: "row",
